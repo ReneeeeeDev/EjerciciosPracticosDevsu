@@ -2,9 +2,9 @@
 node_modules/
 
 # Cypress
-cypress/videos/
-cypress/screenshots/
-cypress/downloads/
+#cypress/videos/
+#cypress/screenshots/
+#cypress/downloads/
 
 # Reports
 mochawesome-report/

@@ -1,7 +1,5 @@
 # 🚀 Guía Rápida de Instalación
 
-## ⚡ Instalación Rápida (5 minutos)
-
 ### 1. Clonar el repositorio
 ```bash
 git clone <URL_DEL_REPOSITORIO>
@@ -86,4 +84,3 @@ npm run cypress:open
 
 ---
 
-**¡Ya estás listo para ejecutar las pruebas! 🎉**

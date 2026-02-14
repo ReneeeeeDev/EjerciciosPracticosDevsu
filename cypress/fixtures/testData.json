@@ -1,0 +1,47 @@
+{
+  "users": {
+    "validUser": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "invalidUser": {
+      "username": "invalid_user",
+      "password": "wrong_password"
+    }
+  },
+  "checkoutInfo": {
+    "firstName": "Juan",
+    "lastName": "Pérez",
+    "postalCode": "170150"
+  },
+  "pets": [
+    {
+      "name": "Firulais",
+      "category": {
+        "id": 1,
+        "name": "Dogs"
+      },
+      "status": "available",
+      "tags": [
+        {
+          "id": 1,
+          "name": "friendly"
+        }
+      ]
+    },
+    {
+      "name": "Michi",
+      "category": {
+        "id": 2,
+        "name": "Cats"
+      },
+      "status": "available",
+      "tags": [
+        {
+          "id": 2,
+          "name": "playful"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+GUÍA: CÓMO GENERAR SCREENSHOTS Y VIDEOS
+
+================================================================================
+IMPORTANTE - Cómo funcionan Screenshots y Videos en Cypress
+================================================================================
+
+VIDEOS:
+- Se generan SOLO en modo HEADLESS (cypress run)
+- NO se generan en modo interactivo (cypress open)
+- Ubicación: cypress/videos/
+
+SCREENSHOTS:
+- Automáticos cuando hay fallos
+- Manuales con cy.screenshot() (ya agregados en el código)
+- Ubicación: cypress/screenshots/
+
+================================================================================
+PASO A PASO - GENERAR SCREENSHOTS Y VIDEOS
+================================================================================
+
+1. Asegúrate de tener instaladas las dependencias
+   -------------------------------------------
+   npm install
+
+2. Ejecutar en modo HEADLESS para generar videos
+   ----------------------------------------------
+   
+   Opción A - Ejecutar TODOS los tests:
+   npm run test:all
+   
+   Opción B - Solo E2E (con videos):
+   npm run test:e2e
+   
+   Opción C - Solo API (con videos):
+   npm run test:api
+
+3. Resultado esperado
+   ------------------
+   Después de ejecutar, verás:
+   
+   cypress/
+   ├── screenshots/
+   │   ├── saucedemo-purchase.cy.js/
+   │   │   ├── 01-login-exitoso-productos.png
+   │   │   ├── 02-productos-agregados-al-carrito.png
+   │   │   ├── 03-carrito-con-productos.png
+   │   │   ├── 04-formulario-checkout-completado.png
+   │   │   ├── 05-resumen-de-compra.png
+   │   │   └── 06-compra-exitosa-confirmacion.png
+   │   │
+   │   └── petstore-api.cy.js/
+   │       ├── API-01-POST-crear-mascota.png
+   │       ├── API-02-GET-consultar-por-id.png
+   │       ├── API-03-PUT-actualizar-mascota.png
+   │       ├── API-04-GET-buscar-por-status.png
+   │       ├── API-05-CRUD-completo.png
+   │       ├── API-06-error-404-not-found.png
+   │       └── API-07-validacion-schema.png
+   │
+   └── videos/
+       ├── saucedemo-purchase.cy.js.mp4
+       └── petstore-api.cy.js.mp4
+
+================================================================================
+SCREENSHOTS GENERADOS
+================================================================================
+
+E2E (6 screenshots):
+- 01-login-exitoso-productos.png           → Página de productos después de login
+- 02-productos-agregados-al-carrito.png    → Badge del carrito con "2"
+- 03-carrito-con-productos.png             → Vista del carrito con items
+- 04-formulario-checkout-completado.png    → Formulario con datos
+- 05-resumen-de-compra.png                 → Resumen antes de finalizar
+- 06-compra-exitosa-confirmacion.png       → Mensaje "Thank you for your order"
+
+API (7 screenshots):
+- API-01-POST-crear-mascota.png            → Response de crear mascota
+- API-02-GET-consultar-por-id.png          → Response de consulta por ID
+- API-03-PUT-actualizar-mascota.png        → Response de actualización
+- API-04-GET-buscar-por-status.png         → Response de búsqueda por status
+- API-05-CRUD-completo.png                 → Flujo CRUD completo
+- API-06-error-404-not-found.png           → Response de error 404
+- API-07-validacion-schema.png             → Response con schema validado
+
+VIDEOS (2 videos):
+- saucedemo-purchase.cy.js.mp4             → Video del flujo E2E completo
+- petstore-api.cy.js.mp4                   → Video de todas las pruebas API
+
+================================================================================
+VERIFICAR QUE SE GENERARON
+================================================================================
+
+En Windows:
+-----------
+dir cypress\screenshots
+dir cypress\videos
+
+En Mac/Linux:
+-------------
+ls -la cypress/screenshots
+ls -la cypress/videos
+
+O simplemente abre la carpeta en el explorador de archivos:
+qa-automation-project/cypress/screenshots/
+qa-automation-project/cypress/videos/
+
+================================================================================
+INCLUIR EN EL ZIP PARA ENTREGAR
+================================================================================
+
+OPCIÓN 1 - Incluir screenshots y videos (RECOMENDADO):
+------------------------------------------------------
+Cuando crees el ZIP, incluye las carpetas:
+- cypress/screenshots/
+- cypress/videos/
+
+Esto demuestra que ejecutaste las pruebas exitosamente.
+
+OPCIÓN 2 - No incluir (más liviano):
+------------------------------------
+Si el ZIP queda muy pesado, puedes omitirlas.
+El reclutador puede generarlos ejecutando:
+npm install && npm run test:all
+
+================================================================================
+COMANDOS ÚTILES
+================================================================================
+
+# Ejecutar y generar todo
+npm run test:all
+
+# Ver en modo interactivo (sin videos, pero puedes debuggear)
+npm run cypress:open
+
+# Ejecutar con navegador específico
+npx cypress run --browser chrome
+
+# Ejecutar solo un archivo específico
+npx cypress run --spec "cypress/e2e/saucedemo-purchase.cy.js"
+
+# Ejecutar sin videos (más rápido)
+npx cypress run --config video=false
+
+# Ejecutar en modo headed (ver la ejecución pero con videos)
+npx cypress run --headed
+
+================================================================================
+SOLUCIÓN DE PROBLEMAS
+================================================================================
+
+Problema: No se generan videos
+-------------------------------
+Solución:
+1. Asegúrate de ejecutar con "cypress run" NO "cypress open"
+2. Verifica que video esté habilitado en cypress.config.js:
+   video: true
+
+Problema: No se generan screenshots
+------------------------------------
+Solución:
+1. Los screenshots manuales solo se generan si los tests PASAN
+2. Verifica que screenshotOnRunFailure esté en true en cypress.config.js
+3. Los screenshots están en el código con cy.screenshot()
+
+Problema: Los archivos son muy grandes
+---------------------------------------
+Solución:
+- Los videos MP4 pueden ser grandes (2-10MB cada uno)
+- Puedes ejecutar con --config video=false para no generarlos
+- O comprimir el ZIP con mayor compresión
+
+================================================================================
+PARA INCLUIR EN GITHUB
+================================================================================
+
+Si subes screenshots/videos a GitHub:
+1. Crea carpeta de ejemplos: mkdir ejemplos
+2. Copia algunos screenshots representativos
+3. Agrega al README:
+
+## Screenshots de Ejemplo
+
+### Flujo E2E Completo
+![Confirmación de compra](ejemplos/06-compra-exitosa-confirmacion.png)
+
+### Pruebas API
+![Crear mascota](ejemplos/API-01-POST-crear-mascota.png)
+
+================================================================================
+RESUMEN
+================================================================================
+
+Para generar screenshots y videos:
+
+1. npm install
+2. npm run test:all
+3. Verifica cypress/screenshots/ y cypress/videos/
+4. (Opcional) Incluye en el ZIP o en GitHub
+
+Los screenshots y videos demuestran que:
+- Las pruebas se ejecutaron exitosamente
+- El código funciona
+- Hay evidencia visual del testing
+
+================================================================================

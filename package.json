@@ -1,0 +1,23 @@
+{
+  "name": "qa-automation-project",
+  "version": "1.0.0",
+  "description": "Proyecto de automatización E2E y API Testing",
+  "scripts": {
+    "test:e2e": "cypress run --spec 'cypress/e2e/**/*.cy.js'",
+    "test:api": "cypress run --spec 'cypress/api/**/*.cy.js'",
+    "test:all": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "api",
+    "testing",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^14.0.0"
+  }
+}

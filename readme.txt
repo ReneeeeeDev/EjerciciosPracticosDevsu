@@ -4,7 +4,7 @@ Proyecto de automatización de pruebas que incluye:
 - **Pruebas E2E** en SauceDemo (Opción 2)
 - **Pruebas de API** en Petstore (Opción 2)
 
-Desarrollado con **Cypress v13** - Framework moderno para E2E y API testing.
+Desarrollado con **Cypress v14** - Framework moderno para E2E y API testing.
 
 ---
 
@@ -43,7 +43,7 @@ Antes de comenzar, asegúrate de tener instalado:
 ### Paso 1: Clonar el repositorio
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/ReneeeeeDev/EjerciciosPracticosDevsu.git
 cd qa-automation-project
 ```
 
@@ -54,7 +54,7 @@ npm install
 ```
 
 Este comando instalará:
-- Cypress v13.6.0
+- Cypress v14.0.0
 - Todas las dependencias necesarias
 
 ⏱️ **Tiempo estimado:** 2-3 minutos

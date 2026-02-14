@@ -8,6 +8,7 @@ describe('E2E - SauceDemo Purchase Flow', () => {
   })
 
   it('Debe completar el flujo de compra exitosamente', () => {
+    cy.wait(500)
     // 1. AUTENTICACIÓN
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
@@ -19,6 +20,8 @@ describe('E2E - SauceDemo Purchase Flow', () => {
     cy.screenshot('01-login-exitoso-productos')
     
     // 2. AGREGAR DOS PRODUCTOS AL CARRITO
+    cy.wait(500)
+
     // Producto 1: Sauce Labs Backpack
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
     
@@ -30,6 +33,8 @@ describe('E2E - SauceDemo Purchase Flow', () => {
     cy.screenshot('02-productos-agregados-al-carrito')
     
     // 3. VISUALIZAR EL CARRITO
+    cy.wait(500)
+
     cy.get('.shopping_cart_link').click()
     cy.url().should('include', '/cart.html')
     cy.get('.title').should('contain', 'Your Cart')
@@ -44,6 +49,8 @@ describe('E2E - SauceDemo Purchase Flow', () => {
     cy.get('[data-test="checkout"]').click()
     
     // 4. COMPLETAR EL FORMULARIO DE COMPRA
+    cy.wait(500)
+
     cy.url().should('include', '/checkout-step-one.html')
     cy.get('.title').should('contain', 'Checkout: Your Information')
     
@@ -70,6 +77,8 @@ describe('E2E - SauceDemo Purchase Flow', () => {
     cy.screenshot('05-resumen-de-compra')
     
     // 5. FINALIZAR LA COMPRA
+    cy.wait(500)
+
     cy.get('[data-test="finish"]').click()
     
     // Verificar confirmación de compra

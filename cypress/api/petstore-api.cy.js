@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
-
+/// anadimos Waits para grabar un mejor video
 describe('API Testing - Petstore CRUD Operations', () => {
-  
+
   const baseUrl = Cypress.env('apiUrl')
   let petId
   const timestamp = Date.now()
@@ -25,8 +25,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
     ],
     status: "available"
   }
-
   it('1. Debe añadir una mascota a la tienda (POST)', () => {
+    cy.wait(500)
+
     cy.request({
       method: 'POST',
       url: `${baseUrl}/pet`,
@@ -56,8 +57,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
       cy.screenshot('API-01-POST-crear-mascota')
     })
   })
-
   it('2. Debe consultar la mascota ingresada previamente por ID (GET)', () => {
+    cy.wait(500)
+
     // Primero crear la mascota
     cy.request('POST', `${baseUrl}/pet`, petData).then((createResponse) => {
       petId = createResponse.body.id
@@ -85,8 +87,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
       })
     })
   })
-
   it('3. Debe actualizar el nombre y estatus de la mascota a "sold" (PUT)', () => {
+    cy.wait(500)
+
     // Primero crear la mascota
     cy.request('POST', `${baseUrl}/pet`, petData).then((createResponse) => {
       petId = createResponse.body.id
@@ -122,8 +125,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
       })
     })
   })
-
   it('4. Debe consultar la mascota modificada por estatus "sold" (GET)', () => {
+    cy.wait(500)
+
     // Primero crear y actualizar la mascota
     cy.request('POST', `${baseUrl}/pet`, petData).then((createResponse) => {
       petId = createResponse.body.id
@@ -167,8 +171,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
       })
     })
   })
-
   it('5. Flujo completo - CRUD de mascota', () => {
+    cy.wait(500)
+
     const completePetData = {
       id: Date.now(),
       category: {
@@ -229,8 +234,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
       })
     })
   })
-
   it('6. Debe manejar errores - Mascota no encontrada', () => {
+    cy.wait(500)
+
     // PRIMERA PRUEBA const nonExistentId = 999999999
     const nonExistentId = -Math.abs(Date.now()) // NO puede existir ID negativo, este test debe devolver un error 
 
@@ -246,8 +252,9 @@ describe('API Testing - Petstore CRUD Operations', () => {
       cy.screenshot('API-06-error-404-not-found')
     })
   })
-
   it('7. Debe validar el schema de respuesta al crear mascota', () => {
+    cy.wait(500)
+
     cy.request('POST', `${baseUrl}/pet`, petData).then((response) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.have.all.keys('id', 'category', 'name', 'photoUrls', 'tags', 'status')

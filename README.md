@@ -40,7 +40,7 @@ Pruebas de operaciones CRUD en Petstore API:
 
 ## Tecnologías Utilizadas
 
-- **Framework:** Cypress 13.6.0
+- **Framework:** Cypress 14.0.0
 - **Lenguaje:** JavaScript (ES6+)
 - **CI/CD:** GitHub Actions
 - **Reportes:** Screenshots y Videos automáticos
@@ -58,7 +58,7 @@ Pruebas de operaciones CRUD en Petstore API:
 
 ```bash
 # Clonar el repositorio
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/ReneeeeeDev/EjerciciosPracticosDevsu.git
 cd qa-automation-project
 
 # Instalar dependencias

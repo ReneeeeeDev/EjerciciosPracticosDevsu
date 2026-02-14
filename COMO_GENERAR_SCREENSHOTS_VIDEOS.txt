@@ -105,24 +105,6 @@ qa-automation-project/cypress/screenshots/
 qa-automation-project/cypress/videos/
 
 ================================================================================
-INCLUIR EN EL ZIP PARA ENTREGAR
-================================================================================
-
-OPCIÓN 1 - Incluir screenshots y videos (RECOMENDADO):
-------------------------------------------------------
-Cuando crees el ZIP, incluye las carpetas:
-- cypress/screenshots/
-- cypress/videos/
-
-Esto demuestra que ejecutaste las pruebas exitosamente.
-
-OPCIÓN 2 - No incluir (más liviano):
-------------------------------------
-Si el ZIP queda muy pesado, puedes omitirlas.
-El reclutador puede generarlos ejecutando:
-npm install && npm run test:all
-
-================================================================================
 COMANDOS ÚTILES
 ================================================================================
 
@@ -161,45 +143,5 @@ Solución:
 1. Los screenshots manuales solo se generan si los tests PASAN
 2. Verifica que screenshotOnRunFailure esté en true en cypress.config.js
 3. Los screenshots están en el código con cy.screenshot()
-
-Problema: Los archivos son muy grandes
----------------------------------------
-Solución:
-- Los videos MP4 pueden ser grandes (2-10MB cada uno)
-- Puedes ejecutar con --config video=false para no generarlos
-- O comprimir el ZIP con mayor compresión
-
-================================================================================
-PARA INCLUIR EN GITHUB
-================================================================================
-
-Si subes screenshots/videos a GitHub:
-1. Crea carpeta de ejemplos: mkdir ejemplos
-2. Copia algunos screenshots representativos
-3. Agrega al README:
-
-## Screenshots de Ejemplo
-
-### Flujo E2E Completo
-![Confirmación de compra](ejemplos/06-compra-exitosa-confirmacion.png)
-
-### Pruebas API
-![Crear mascota](ejemplos/API-01-POST-crear-mascota.png)
-
-================================================================================
-RESUMEN
-================================================================================
-
-Para generar screenshots y videos:
-
-1. npm install
-2. npm run test:all
-3. Verifica cypress/screenshots/ y cypress/videos/
-4. (Opcional) Incluye en el ZIP o en GitHub
-
-Los screenshots y videos demuestran que:
-- Las pruebas se ejecutaron exitosamente
-- El código funciona
-- Hay evidencia visual del testing
 
 ================================================================================
